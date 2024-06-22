@@ -16,7 +16,9 @@ import { manifest } from "@qwik-client-manifest";
 import render from "./entry.ssr";
 
 declare global {
-  interface QwikCityPlatform extends PlatformCloudflarePages {}
+  interface QwikCityPlatform extends PlatformCloudflarePages {
+    TRAVERSE_API_KEY: string;
+  }
 }
 
 const fetch = createQwikCity({ render, qwikCityPlan, manifest });
