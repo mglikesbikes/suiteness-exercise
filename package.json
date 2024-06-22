@@ -11,7 +11,17 @@
   ],
   "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
   "type": "module",
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts,tsx,css,mdx"
+    }
+  },
   "scripts": {
+    "watch": "npm-watch build",
+    "serve": "wrangler pages dev ./dist --compatibility-flags=nodejs_compat",
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
@@ -24,7 +34,6 @@
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
     "preview": "qwik build preview && vite preview --open",
-    "serve": "wrangler pages dev ./dist --compatibility-flags=nodejs_als",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
   },
@@ -39,6 +48,7 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.57.0",
     "eslint-plugin-qwik": "^1.5.7",
+    "npm-watch": "^0.13.0",
     "postcss": "^8.4.31",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.4",
