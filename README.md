@@ -1,16 +1,14 @@
-# Qwik City App ⚡️
+# Project Setup
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
+👉 View it live: https://mg-suiteness-exercise-2024.pages.dev
 
----
-
-## Project Setup
+Build locally:
 
 1. Add a `.dev.vars` file with your API key by copying `.dev.vars.example`
+2. `npm install`
+3. For dev, run `watch` and `serve` in two terminals to use `cloudflared`
+4. Deploy by committing to `main`
+5. Add Cloudflare services to wrangler.toml and `qwik.env.d.ts`
 
 ## Project Structure
 
