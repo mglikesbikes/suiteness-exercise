@@ -8,6 +8,10 @@
 
 ---
 
+## Project Setup
+
+1. Add a `.dev.vars` file with your API key by copying `.dev.vars.example`
+
 ## Project Structure
 
 This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
