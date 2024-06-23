@@ -1,5 +1,10 @@
 import { component$, Slot } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
+import { Footer } from "~/components/global/Footer";
+import { Header } from "~/components/global/Header";
+import { Main } from "~/components/global/Main";
+import { Fetcher } from "~/data/Fetcher";
+import { GetPing } from "~/data/transactions/GetPing";
 
 export const onGet: RequestHandler<PlatformRequest> = async ({
   cacheControl,
@@ -14,6 +19,25 @@ export const onGet: RequestHandler<PlatformRequest> = async ({
   });
 };
 
+export const usePing = routeLoader$(async (event) => {
+  const fetcher = new Fetcher({ apiKey: event.platform.env.TRAVERSE_API_KEY });
+
+  const ping = new GetPing();
+  await fetcher.fetch(ping);
+
+  return ping.data;
+});
+
 export default component$(() => {
-  return <Slot />;
+  const ping = usePing();
+
+  return (
+    <>
+      <Header email={ping.value.email} />
+      <Main>
+        <Slot />
+      </Main>
+      <Footer />
+    </>
+  );
 });
