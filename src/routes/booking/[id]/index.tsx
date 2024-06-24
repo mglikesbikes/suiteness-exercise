@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
-import ErrorCard from "~/components/global/ErrorCard";
+import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
+import { BookingDetail } from "~/components/booking/BookingDetail";
 import { Fetcher } from "~/data/Fetcher";
 import { GetBookingById } from "~/data/transactions/GetBookingById";
 
@@ -15,8 +15,22 @@ export const useBookingDetail = routeLoader$(async (event) => {
 export default component$(() => {
   const detail = useBookingDetail();
 
-  if (detail.value.message || !detail.value.booking)
-    return <ErrorCard message={detail.value.message} />;
+  console.log("> detail:", detail.value);
 
-  return <pre>{JSON.stringify(detail, null, 2)}</pre>;
+  return <BookingDetail booking={detail.value} />;
 });
+
+export const head: DocumentHead = (props) => {
+  const detail = props.resolveValue(useBookingDetail);
+  const booking = detail.booking;
+
+  if (booking) {
+    return {
+      title: `Booking ID #${booking.id} ${booking.hotel.name} | Suiteness Admin`,
+    };
+  }
+
+  return {
+    title: `Something went wrong: ${detail.message}`,
+  };
+};

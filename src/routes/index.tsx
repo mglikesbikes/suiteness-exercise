@@ -15,11 +15,14 @@ export const useBookings = routeLoader$(async (event) => {
 export default component$(() => {
   const bookings = useBookings();
 
+  const list = bookings.value.bookings.filter((b) => b.id === 807);
+  console.log(">>", list);
+
   return <BookingList data={bookings.value} />;
 });
 
 export const head: DocumentHead = {
-  title: "Bookings | Suiteness Admin",
+  title: "My Bookings | Suiteness Admin",
   meta: [
     {
       name: "description",

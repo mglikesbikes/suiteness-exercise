@@ -4,6 +4,7 @@ import { type GetBookingsData } from "~/data/transactions/GetBookings";
 import ErrorCard from "../global/ErrorCard";
 import { Link, useNavigate } from "@builder.io/qwik-city";
 import { HiArrowRightCircleSolid } from "@qwikest/icons/heroicons";
+import { plural } from "~/utils/plural";
 
 type ListProps = {
   data: GetBookingsData;
@@ -72,19 +73,21 @@ export const BookingListItem = component$((props: ListItemProps) => {
             {props.booking.computed.status.label}
           </dd>
         </div>
-        <div class="">
-          <dt class=" text-xs font-bold uppercase text-slate-500 ">Total</dt>
+        <div>
+          <dt class="text-xs font-bold uppercase text-slate-500 ">Total</dt>
           <dd>
             {formatCurrency(props.booking.total, props.booking.currencyCode)}
           </dd>
         </div>
-        <div class="">
-          <dt class="text-xs font-bold uppercase text-slate-500">Duration</dt>
+        <div>
+          <dt class="text-xs font-bold uppercase text-slate-500">
+            Total nights
+          </dt>
           <dd>{props.booking.computed.duration.label}</dd>
         </div>
         <div>
           <dt class="text-xs font-bold uppercase text-slate-500">Occupancy</dt>
-          <dd>{`${props.booking.occupancy} adult${props.booking.occupancy !== 1 ? "s" : ""}`}</dd>
+          <dd>{plural(props.booking.occupancy, "adult", "adults")}</dd>
         </div>
         <div class="ml-auto">
           <dt
@@ -96,8 +99,8 @@ export const BookingListItem = component$((props: ListItemProps) => {
           <dd>
             <Link
               href={`/booking/${props.booking.id}`}
-              aria-label={`All details for booking ID#${props.booking.id}`}
-              class="flex items-center gap-2 font-bold"
+              aria-label={`All details for booking ID #${props.booking.id}`}
+              class="flex items-center gap-2 font-bold hover:underline"
             >
               All details
               <HiArrowRightCircleSolid />
