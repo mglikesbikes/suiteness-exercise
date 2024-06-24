@@ -12,7 +12,7 @@ export const Header = component$(({ email }: { email?: string }) => {
   return (
     <header class="bg-slate-200 shadow-sm">
       <Container>
-        <div class="flex flex-col gap-2 sm:justify-between md:flex-row md:items-center">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <H1>My Bookings</H1>
           </div>

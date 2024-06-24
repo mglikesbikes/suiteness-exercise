@@ -37,14 +37,14 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
           All listings
         </Link>
       </nav>
-      <section class="flex flex-col gap-4 rounded-lg border border-slate-500 bg-slate-100 p-4 md:gap-8">
+      <section class="flex flex-col gap-4 rounded-lg border border-slate-500 bg-slate-100 p-4 sm:gap-8">
         <h1 class="flex flex-col gap-0">
           <span class="text-xs font-bold uppercase text-slate-500">
             Booking ID #{booking.id}
           </span>
           <span class="text-2xl font-bold">{booking.hotel.name}</span>
         </h1>
-        <dl class="flex flex-col gap-4 md:flex-row">
+        <dl class="flex flex-col gap-4 sm:flex-row">
           {booking.computed.status && (
             <div
               class={{
@@ -137,7 +137,7 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
               ({booking.customer.bookingIds.length})
             </span>
           </summary>
-          <ul class="grid grid-cols-4 gap-2">
+          <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4">
             {booking.customer.bookingIds.map((bookingId) => (
               <li key={bookingId}>
                 <Link href={`/booking/${bookingId}`} class="hover:underline">

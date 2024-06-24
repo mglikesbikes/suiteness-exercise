@@ -51,12 +51,12 @@ export const BookingListItem = component$((props: ListItemProps) => {
         </span>
         <span class="text-xl font-bold">{props.booking.hotelName}</span>
       </h2>
-      <dl class="justify-start md:flex">
+      <dl class="justify-start sm:flex">
         {props.booking.computed.status && (
           <div
             class={{
               "rounded-tr-lg": true,
-              "md:border-r md:border-t": true,
+              "sm:border-r sm:border-t": true,
               "border-red-900 bg-red-100 text-red-900":
                 props.booking.computed.status.priority === 1,
               "border-yellow-900 bg-yellow-100 text-yellow-900":
@@ -93,7 +93,7 @@ export const BookingListItem = component$((props: ListItemProps) => {
         </div>
         <div class="ml-auto">
           <dt
-            class="hidden text-xs font-bold uppercase text-slate-500 md:block"
+            class="hidden text-xs font-bold uppercase text-slate-500 sm:block"
             aria-label="More details"
           >
             &nbsp;
