@@ -15,8 +15,6 @@ export const useBookingDetail = routeLoader$(async (event) => {
 export default component$(() => {
   const detail = useBookingDetail();
 
-  console.log("> detail:", detail.value);
-
   return <BookingDetail booking={detail.value} />;
 });
 

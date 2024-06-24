@@ -6,18 +6,18 @@ import { Main } from "~/components/global/Main";
 import { Fetcher } from "~/data/Fetcher";
 import { GetPing } from "~/data/transactions/GetPing";
 
-export const onGet: RequestHandler<PlatformRequest> = async ({
-  cacheControl,
-}) => {
-  // Control caching for this request for best performance and to reduce hosting costs:
-  // https://qwik.dev/docs/caching/
-  cacheControl({
-    // Always serve a cached response by default, up to a week stale
-    staleWhileRevalidate: 60 * 60 * 24 * 7,
-    // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
-    maxAge: 5,
-  });
-};
+// export const onGet: RequestHandler<PlatformRequest> = async ({
+//   cacheControl,
+// }) => {
+//   // Control caching for this request for best performance and to reduce hosting costs:
+//   // https://qwik.dev/docs/caching/
+//   cacheControl({
+//     // Always serve a cached response by default, up to a week stale
+//     staleWhileRevalidate: 60 * 60 * 24 * 7,
+//     // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
+//     maxAge: 5,
+//   });
+// };
 
 export const usePing = routeLoader$(async (event) => {
   const fetcher = new Fetcher({ apiKey: event.platform.env.TRAVERSE_API_KEY });

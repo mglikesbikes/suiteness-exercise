@@ -52,29 +52,27 @@ export const BookingListItem = component$((props: ListItemProps) => {
         <span class="text-xl font-bold">{props.booking.hotelName}</span>
       </h2>
       <dl class="justify-start sm:flex">
-        {props.booking.computed.status && (
-          <div
+        <div
+          class={{
+            "rounded-tr-lg": true,
+            "sm:border-r sm:border-t": true,
+            "border-red-900 bg-red-100 text-red-900":
+              props.booking.computed.status.priority === 1,
+            "border-yellow-900 bg-yellow-100 text-yellow-900":
+              props.booking.computed.status.priority === 2,
+            "border-green-900 bg-green-100 text-green-900":
+              props.booking.computed.status.priority === 3,
+          }}
+        >
+          <dt class="text-xs font-bold uppercase opacity-60">Status</dt>
+          <dd
             class={{
-              "rounded-tr-lg": true,
-              "sm:border-r sm:border-t": true,
-              "border-red-900 bg-red-100 text-red-900":
-                props.booking.computed.status.priority === 1,
-              "border-yellow-900 bg-yellow-100 text-yellow-900":
-                props.booking.computed.status.priority === 2,
-              "border-green-900 bg-green-100 text-green-900":
-                props.booking.computed.status.priority === 3,
+              "font-bold": props.booking.computed.status.priority < 3,
             }}
           >
-            <dt class="text-xs font-bold uppercase opacity-60">Status</dt>
-            <dd
-              class={{
-                "font-bold": props.booking.computed.status.priority < 3,
-              }}
-            >
-              {props.booking.computed.status.label}
-            </dd>
-          </div>
-        )}
+            {props.booking.computed.status.label}
+          </dd>
+        </div>
         <div>
           <dt class="text-xs font-bold uppercase text-slate-500 ">Total</dt>
           <dd>
@@ -103,6 +101,7 @@ export const BookingListItem = component$((props: ListItemProps) => {
               href={`/booking/${props.booking.id}`}
               aria-label={`All details for booking ID #${props.booking.id}`}
               class="flex items-center gap-2 font-bold hover:underline"
+              stoppropagation:click
             >
               All details
               <HiArrowRightCircleSolid />
