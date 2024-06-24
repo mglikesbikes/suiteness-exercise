@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
-import BookingList from "~/components/bookings/BookingList";
-import ErrorCard from "~/components/global/ErrorCard";
+import { BookingList } from "~/components/booking/BookingList";
 import { Fetcher } from "~/data/Fetcher";
 import { GetBookings } from "~/data/transactions/GetBookings";
 
@@ -16,11 +15,7 @@ export const useBookings = routeLoader$(async (event) => {
 export default component$(() => {
   const bookings = useBookings();
 
-  if (bookings.value.bookings.length)
-    return <BookingList bookings={bookings.value.bookings} />;
-  else if (bookings.value.ok === true)
-    return <p class="text-slate-500">No bookings found.</p>;
-  else return <ErrorCard message={bookings.value.message} />;
+  return <BookingList data={bookings.value} />;
 });
 
 export const head: DocumentHead = {
