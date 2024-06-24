@@ -1,9 +1,13 @@
-import { Fetchable } from "../Fetcher";
+import { type Computed, Fetchable } from "../Fetcher";
 import { bookingDetail, type BookingDetailSchema } from "../schemas/booking";
+import { duration } from "./computed/booking/duration";
+import { status } from "./computed/booking/status";
 
-type Data = {
+type GetBookingByIdData = {
   id: string | undefined;
-  booking: BookingDetailSchema | undefined;
+  booking:
+    | (BookingDetailSchema & Computed<GetBookingById["computed"]>)
+    | undefined;
   message: string | undefined;
 };
 
@@ -12,7 +16,7 @@ export class GetBookingById extends Fetchable {
     return `/bookings/${this.data.id}`;
   }
 
-  public data: Data = {
+  public data: GetBookingByIdData = {
     id: undefined,
     booking: undefined,
     message: undefined,
@@ -24,6 +28,11 @@ export class GetBookingById extends Fetchable {
     this.data.id = id;
   }
 
+  computed = {
+    status,
+    duration,
+  };
+
   fromJSON(json: any): void {
     if (json["message"]) {
       this.data.message = json["message"];
@@ -33,7 +42,7 @@ export class GetBookingById extends Fetchable {
     const res = bookingDetail.safeParse(json);
 
     if (res.success) {
-      this.data.booking = res.data;
+      this.data.booking = this.compute(res.data);
     } else {
       this.data.message = res.error.toString();
     }

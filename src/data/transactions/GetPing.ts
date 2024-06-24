@@ -1,12 +1,14 @@
 import { Fetchable } from "../Fetcher";
 import { ping, type PingSchema } from "../schemas/ping";
 
+export type GetPingData = PingSchema;
+
 export class GetPing extends Fetchable {
   get pathname(): string {
     return "/ping";
   }
 
-  public data: PingSchema = { ok: false };
+  public data: GetPingData = { ok: false };
 
   fromJSON(json: any): void {
     const parsed = ping.safeParse(json);
