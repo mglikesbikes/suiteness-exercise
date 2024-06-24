@@ -45,28 +45,30 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
           <span class="text-2xl font-bold">{booking.hotel.name}</span>
         </h1>
         <dl class="flex flex-col gap-4 md:flex-row">
-          <div
-            class={{
-              "p-2": true,
-              "rounded-lg": true,
-              border: true,
-              "border-red-900 bg-red-100 text-red-900":
-                booking.computed.status.priority === 1,
-              "border-yellow-900 bg-yellow-100 text-yellow-900":
-                booking.computed.status.priority === 2,
-              "border-green-900 bg-green-100 text-green-900":
-                booking.computed.status.priority === 3,
-            }}
-          >
-            <dt class="text-xs font-bold uppercase opacity-60">Status</dt>
-            <dd
+          {booking.computed.status && (
+            <div
               class={{
-                "font-bold": booking.computed.status.priority < 3,
+                "p-2": true,
+                "rounded-lg": true,
+                border: true,
+                "border-red-900 bg-red-100 text-red-900":
+                  booking.computed.status.priority === 1,
+                "border-yellow-900 bg-yellow-100 text-yellow-900":
+                  booking.computed.status.priority === 2,
+                "border-green-900 bg-green-100 text-green-900":
+                  booking.computed.status.priority === 3,
               }}
             >
-              {booking.computed.status.label}
-            </dd>
-          </div>
+              <dt class="text-xs font-bold uppercase opacity-60">Status</dt>
+              <dd
+                class={{
+                  "font-bold": booking.computed.status.priority < 3,
+                }}
+              >
+                {booking.computed.status.label}
+              </dd>
+            </div>
+          )}
           <AttributeDisplay label="Check in" class="p-2">
             {formatDate(booking.checkInDate)}
           </AttributeDisplay>
