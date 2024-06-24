@@ -30,7 +30,9 @@ export class GetBookings extends Fetchable {
 
   // our computed attributes and their definitions
   computed = {
-    status,
+    status: (v: BookingSchema) => {
+      return status(v.cancelled, v.paid);
+    },
     duration,
   };
 

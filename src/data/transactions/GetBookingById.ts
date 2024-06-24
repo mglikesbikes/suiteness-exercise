@@ -3,7 +3,7 @@ import { bookingDetail, type BookingDetailSchema } from "../schemas/booking";
 import { duration } from "./computed/booking/duration";
 import { status } from "./computed/booking/status";
 
-type GetBookingByIdData = {
+export type GetBookingByIdData = {
   id: string | undefined;
   booking:
     | (BookingDetailSchema & Computed<GetBookingById["computed"]>)
@@ -29,7 +29,9 @@ export class GetBookingById extends Fetchable {
   }
 
   computed = {
-    status,
+    status: (v: BookingDetailSchema) => {
+      return status(v.cancelledAt !== null, v.paidInFullAt !== null);
+    },
     duration,
   };
 

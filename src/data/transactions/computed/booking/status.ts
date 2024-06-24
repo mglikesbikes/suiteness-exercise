@@ -1,5 +1,3 @@
-import { type BookingSchema } from "~/data/schemas/booking";
-
 interface ComputedStatus {
   cancelled: boolean;
   fullyPaid: boolean;
@@ -8,10 +6,13 @@ interface ComputedStatus {
   label: string;
 }
 
-export const status = (booking: BookingSchema): ComputedStatus => {
+export const status = (
+  cancelled: boolean,
+  fullyPaid: boolean,
+): ComputedStatus => {
   const status: ComputedStatus = {
-    cancelled: booking.cancelled === true,
-    fullyPaid: booking.paid === true,
+    cancelled,
+    fullyPaid,
     priority: 3, // okay
     label: "OK",
   };

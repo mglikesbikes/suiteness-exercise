@@ -1,5 +1,6 @@
 import { type BookingSchema } from "~/data/schemas/booking";
 import { differenceInCalendarDays } from "date-fns";
+import { plural } from "~/utils/plural";
 
 interface ComputedDuration {
   length: number;
@@ -14,6 +15,6 @@ export const duration = (booking: BookingSchema): ComputedDuration => {
 
   return {
     length,
-    label: `${length} day${length !== 1 ? "s" : ""}`,
+    label: plural(length, "night", "nights"),
   };
 };
