@@ -8,6 +8,7 @@
 node_modules
 *.local
 .dev.vars
+adapters/cloudflare-pages/vite.config.ts.timestamp*
 
 # Cache
 .cache

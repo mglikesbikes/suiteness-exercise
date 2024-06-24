@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Container } from "./Container";
 import { H1 } from "./H1";
+import { Link } from "@builder.io/qwik-city";
 
 export const Header = component$(({ email }: { email?: string }) => {
   return (
@@ -8,7 +9,11 @@ export const Header = component$(({ email }: { email?: string }) => {
       <Container>
         <div class="sm:flex sm:items-end sm:justify-between">
           <div>
-            <H1>Bookings</H1>
+            <H1>
+              <Link href="/" class="hover:underline">
+                Bookings
+              </Link>
+            </H1>
             <p>Manage your Suiteness bookings.</p>
           </div>
           {email && (
