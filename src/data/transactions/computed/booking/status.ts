@@ -14,7 +14,7 @@ export const status = (
     cancelled,
     fullyPaid,
     priority: 3, // okay
-    label: "OK",
+    label: "Paid", // default is fully paid and not canceled
   };
 
   // raise the priority if it's cancelled and fully paid: (this is a guess), but sounds like it would need a refund
@@ -23,19 +23,16 @@ export const status = (
     status.label = "Refund Required";
   }
 
+  // if it's cancelled and not paid
   if (status.cancelled && !status.fullyPaid) {
     status.priority = 2; // info
     status.label = "Cancelled";
   }
 
-  if (!status.cancelled && status.fullyPaid) {
-    status.priority = 3; //ok
-    status.label = "Paid";
-  }
-
-  if (!status.fullyPaid) {
-    status.priority = 2; //info
-    status.label = "Not Fully Paid";
+  // if it's not paid and not cancelled
+  if (!status.cancelled && !status.fullyPaid) {
+    status.priority = 2; //ok
+    status.label = "Not Paid";
   }
 
   return status;
