@@ -1,3 +1,5 @@
-export const formatDate = () => {
-  return "To, 20-Do";
+export const formatDate = (d: string) => {
+  return new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(
+    new Date(d),
+  );
 };
