@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { type BookingDuration } from "~/v2/loaders/helpers/getBookingDuration";
+import { type BookingStatus } from "~/v2/loaders/helpers/getBookingStatus";
 
 export const BookingDetailSchema = z.object({
   cancelledAt: z.string().datetime().nullable(),
@@ -32,3 +34,7 @@ export const BookingDetailSchema = z.object({
 });
 
 export type BookingDetail = z.infer<typeof BookingDetailSchema>;
+export interface BookingDetailWithStatusAndDuration extends BookingDetail {
+  status: BookingStatus;
+  duration: BookingDuration;
+}

@@ -13,7 +13,7 @@ export default component$((props: GlobalHeaderProps) => {
   return (
     <header class="border-b border-b-slate-500 bg-slate-100 shadow">
       <PageWidth>
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-bold">
             {props.label}
             {props.count && (

@@ -1,5 +1,5 @@
 import { routeLoader$ } from "@builder.io/qwik-city";
-import { getTraverseFetch } from "./Api";
+import { getTraverseFetch } from "./helpers/getTraverseFetch";
 import { BookingsSchema } from "../schemas/data/BookingsSchema";
 import { getBookingStatus } from "./helpers/getBookingStatus";
 import { type BookingWithStatusAndDuration } from "../schemas/data/BookingSchema";

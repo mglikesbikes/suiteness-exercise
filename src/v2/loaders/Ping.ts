@@ -1,6 +1,6 @@
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { PingSchema, type Ping } from "../schemas/data/PingSchema";
-import { getTraverseFetch } from "./Api";
+import { getTraverseFetch } from "./helpers/getTraverseFetch";
 
 type UsePing = Ping;
 
