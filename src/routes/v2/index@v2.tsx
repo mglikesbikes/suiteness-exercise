@@ -6,7 +6,7 @@ import { useBookings } from "~/v2/loaders/Bookings";
 import { type DocumentHead } from "@builder.io/qwik-city";
 import { BookingList } from "~/v2/components/booking/list/BookingList";
 
-export { useBookings } from "~/v2/loaders/Bookings";
+export { useBookings };
 
 export default component$(() => {
   const bookings = useBookings();

@@ -8,7 +8,7 @@ import { LinkButton } from "~/v2/components/global/LinkButton";
 import { PageWidth } from "~/v2/components/global/PageWidth";
 import { useBookingDetail } from "~/v2/loaders/BookingDetail";
 
-export { useBookingDetail } from "~/v2/loaders/BookingDetail";
+export { useBookingDetail };
 
 export default component$(() => {
   const detail = useBookingDetail();
