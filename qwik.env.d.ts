@@ -14,6 +14,7 @@ declare global {
   interface PlatformRequest extends PlatformCloudflarePages {
     env: {
       TRAVERSE_API_KEY: string;
+      TRAVERSE_API_ROOT: string;
     };
   }
 }
