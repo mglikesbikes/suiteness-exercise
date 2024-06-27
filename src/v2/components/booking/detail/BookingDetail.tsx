@@ -98,7 +98,7 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
                   href={`/v2/bookings/${bookingId}`}
                   class="hover:underline"
                 >
-                  Booking ID #{bookingId}
+                  Booking #{bookingId}
                 </Link>
               </li>
             ))}
