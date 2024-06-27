@@ -3,8 +3,6 @@ import {
   createContextId,
   type QRL,
   useContext,
-  useSignal,
-  useVisibleTask$,
 } from "@builder.io/qwik";
 import { HiXCircleSolid } from "@qwikest/icons/heroicons";
 import { writeToUrl } from "~/utils/writeToUrl";
@@ -51,7 +49,7 @@ export const BookingListFilter = component$(() => {
           <input
             type="submit"
             value="Apply"
-            class="sr-only rounded border border-slate-500 bg-slate-100 p-2"
+            class="sr-only focus:not-sr-only"
           />
         </div>
       </div>
