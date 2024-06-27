@@ -135,7 +135,7 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
               ({booking.customer.bookingIds.length})
             </span>
           </summary>
-          <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4" role="list">
             {booking.customer.bookingIds.map((bookingId) => (
               <li key={bookingId}>
                 <Link href={`/booking/${bookingId}`} class="hover:underline">

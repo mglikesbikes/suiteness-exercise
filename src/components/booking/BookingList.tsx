@@ -13,7 +13,7 @@ type ListProps = {
 export const BookingList = component$((props: ListProps) => {
   if (props.data.bookings.length)
     return (
-      <ul class="flex flex-col gap-2">
+      <ul class="flex flex-col gap-2" role="list">
         {props.data.bookings.map((booking) => (
           <BookingListItem key={booking.id} booking={booking} />
         ))}
