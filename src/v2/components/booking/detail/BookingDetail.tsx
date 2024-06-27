@@ -91,14 +91,14 @@ export const BookingDetail = component$((props: BookingDetailProps) => {
               ({props.booking.customer.bookingIds.length})
             </span>
           </summary>
-          <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <ul class="grid grid-cols-2 gap-2 sm:grid-cols-4" role="list">
             {props.booking.customer.bookingIds.map((bookingId) => (
               <li key={bookingId}>
                 <Link
                   href={`/v2/bookings/${bookingId}`}
                   class="hover:underline"
                 >
-                  Booking ID #{bookingId}
+                  Booking #{bookingId}
                 </Link>
               </li>
             ))}

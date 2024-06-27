@@ -8,7 +8,7 @@ interface BookingListProps {
 
 export const BookingList = component$((props: BookingListProps) => {
   return (
-    <ul>
+    <ul role="list">
       {props.bookings.map((booking) => (
         <BookingListItem key={booking.id} booking={booking} />
       ))}

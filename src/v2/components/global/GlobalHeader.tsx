@@ -17,7 +17,14 @@ export default component$((props: GlobalHeaderProps) => {
           <h1 class="text-2xl font-bold">
             {props.label}
             {props.count && (
-              <span class="font-normal text-slate-500"> ({props.count})</span>
+              <span
+                class="font-normal text-slate-500"
+                role="status"
+                aria-label={props.label}
+              >
+                {" "}
+                ({props.count})
+              </span>
             )}
           </h1>
           {rootContext.signedIn && rootContext.user ? (
